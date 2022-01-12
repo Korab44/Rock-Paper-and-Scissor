@@ -22,35 +22,25 @@ function play(playerSelection, computerSelection) {
     }
     
 }
-let playerSelection = 'scissors';
+// let playerSelection = 'scissors';
+let playerSelection = prompt("Rock Paper or Scissor")
 playerSelection = aArray.find(element => {
 return element.toLowerCase() === playerSelection.toLowerCase();
 });
+
 let computerSelection = computerPlay();
-console.log(play(playerSelection, computerSelection))
+
+console.log(play(playerSelection, computerSelection));
+console.log(play(playerSelection, computerSelection));
+console.log(play(playerSelection, computerSelection));
 
 function game() {
-    for (play = 0; play  < 5; play++) {
-    console.log('a')
-    }
-
+for (let i = 1; i < 8; i++) {
+   console.log(play(playerSelection, computerSelection));
 }
+}
+game();
 
-for (let step = 0; step < 5; step++) {
-    // Runs 5 times, with values of step 0 through 4.
-    console.log('Walking east one step');
-  }
-  
 
-// function game() {
-//     for (let i = 0; i <= play; i++) {
-//         if ((i === 'Rock' && computerSelection === 'Scissors') || (i === 'Scissors' && computerSelection === 'Paper') || (playerSelection == 'Paper' && computerSelection == 'Rock')) {
-//           console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
-//         } else if (i === computerSelection) {
-//           console.log(`It's a tie, ${playerSelection} equals ${computerSelection}`);
-//         } else {
-//           console.log(`You loose! ${computerSelection} beats ${playerSelection}`);
-//         }
-//       }
-//     }
+
 

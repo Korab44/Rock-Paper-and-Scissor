@@ -1,3 +1,4 @@
+
 let aArray =  ['Rock', 'Paper', 'Scissors'];
 function computerPlay() {
     let random = Math.floor(Math.random()*aArray.length)
@@ -5,41 +6,65 @@ function computerPlay() {
     return choice
 }
 
+var score = 0;
+let moves = 0;
+
+let Sscore = document.querySelector('#score');
+Sscore.style.cssText = 'color: blue; background: lightblue; font-size: 20px; gap: 10px; margin-top: 10px; margin-bottom: 10px';  
+let container = document.querySelector('#container');
+container.style.cssText = 'color: brown; font-size: 20px';
 function play(playerSelection, computerSelection) {  
     let win = `You Win! ${playerSelection} beats ${computerSelection}`;
     let loose = `You loose! ${computerSelection} beats ${playerSelection}`;
     let tie = `It's a tie, ${playerSelection} equals ${computerSelection}`;
-    if (playerSelection == 'Rock' && computerSelection == 'Scissors') {
-        return win
-    } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
-        return win
-    } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
-        return win
-    } else if (playerSelection == computerSelection) {
-        return tie
-    } else {
-        return loose
-    }
+        if(playerSelection == 'Rock' && computerSelection == 'Scissors') {
+        score = score + 1;
+        Sscore.textContent = 'Score: ' + score;
+        return  container.textContent = win;
+        } else if (playerSelection == 'Scissors' && computerSelection == 'Paper') {
+        score = score + 1;
+        Sscore.textContent = 'Score: ' + score;
+        return container.textContent = win;
+        } else if (playerSelection == 'Paper' && computerSelection == 'Rock') {
+        score = score + 1;
+        Sscore.textContent = 'Score: ' + score;
+        return container.textContent = win;
+        } else if (playerSelection == computerSelection) {
+          return container.textContent = tie;
+        } else {
+        score = score - 1;
+        Sscore.textContent = 'Score: ' + score;
+        return container.textContent = loose;
+       
+        } 
+}   
+
+
+
+
+
+const buttons = document.querySelectorAll('button');
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
     
-}
-// let playerSelection = 'scissors';
-let playerSelection = prompt("Rock Paper or Scissor")
-playerSelection = aArray.find(element => {
-return element.toLowerCase() === playerSelection.toLowerCase();
+  let playerSelection = button.id;
+ let computerSelection = computerPlay();
+ play(playerSelection, computerSelection);
+ if(score == 5) {
+     alert('win')
+ } else if (score == -5){
+     alert('loss')
+ }
+
+  });
 });
 
-let computerSelection = computerPlay();
 
-console.log(play(playerSelection, computerSelection));
-console.log(play(playerSelection, computerSelection));
-console.log(play(playerSelection, computerSelection));
 
-function game() {
-for (let i = 1; i < 8; i++) {
-   console.log(play(playerSelection, computerSelection));
-}
-}
-game();
 
 
 
